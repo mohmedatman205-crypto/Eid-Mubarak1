@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد أضحى مبارك | محمد عبد المنعم</title>
+    <!-- Fonts & Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2 style="margin-top: 20px; color: var(--primary-color);">جاري التحضير...</h2>
+    </div>
+
+    <div class="floating-controls">
+        <button class="icon-btn" id="themeToggle" title="تغيير المظهر"><i class="fas fa-moon"></i></button>
+        <button class="icon-btn" id="musicToggle" title="تشغيل/إيقاف الصوت"><i class="fas fa-music"></i></button>
+    </div>
+
+    <div class="lantern" style="font-size: 3rem; color: var(--secondary-color);"><i class="fa-solid fa-mosque"></i></div>
+    <div class="lantern" style="font-size: 4rem; color: var(--secondary-color);"><i class="fa-solid fa-star-and-crescent"></i></div>
+
+    <header id="home">
+        <h1>عيد أضحى مبارك</h1>
+        <p class="subtitle">يهنئكم <strong>محمد عبد المنعم محمد مصطفى عتمان</strong> بمناسبة عيد الأضحى المبارك، أعاده الله عليكم بالخير واليمن والبركات.</p>
+
+        <a href="#msg" class="btn-primary">ابدأ الآن <i class="fas fa-arrow-down"></i></a>
+    </header>
+
+    <section id="msg" class="section">
+        <div class="glass-card">
+            <h2 class="section-title">رسالتي إليكم</h2>
+            <p class="personal-msg">
+                "السلام عليكم ورحمة الله وبركاته،<br> أهنئكم بحلول عيد الأضحى المبارك وأسأل الله أن يتقبل منا ومنكم صالح الأعمال وأن يديم عليكم الصحة والسعادة.<br><br>
+                <span style="color: var(--secondary-color);">أخوكم / محمد عبد المنعم محمد مصطفى عتمان</span>"
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">الأشخاص الذين أهنئهم</h2>
+        <div class="greetings-grid" id="greetingsContainer">
+            <!-- dynamic from JS -->
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">اصنع بطاقتك الخاصة</h2>
+        <div class="generator-container">
+            <div class="glass-card" style="flex: 1; min-width: 300px;">
+                <div class="form-group">
+                    <label>شكل البطاقة</label>
+                    <select id="cardTemplate" class="form-control">
+                        <option value="1">الأخضر الملكي</option>
+                        <option value="2">الأزرق الفضي</option>
+                        <option value="3">العنابي الذهبي</option>
+                        <option value="4">الأسود الراقي</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>صورتك الشخصية (اختياري)</label>
+                    <input type="file" id="userImage" class="form-control" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label>الاسم الكريم</label>
+                    <input type="text" id="userName" class="form-control" placeholder="اكتب اسمك ليظهر أسفل البطاقة...">
+                </div>
+                <div class="form-group">
+                    <label>التهنئة (اختياري)</label>
+                    <input type="text" id="userMsg" class="form-control" placeholder="مثال: كل عام وأنتم بخير" value="كل عام وأنتم بخير">
+                </div>
+                <button class="btn-primary" style="width: 100%;" id="generateCardBtn">إنشاء بطاقة العيد <i class="fas fa-magic"></i></button>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div id="card-preview-container">
+                    <canvas id="eidCanvas" width="1080" height="1080"></canvas>
+                </div>
+                <div class="action-buttons">
+                    <button class="icon-btn" id="downloadBtn" title="تحميل"><i class="fas fa-download"></i></button>
+                    <button class="icon-btn" id="shareBtn" title="مشاركة"><i class="fas fa-share-nodes"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1DBise39AT/"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@mohamedabdelmoneimetman?_r=1&_t=ZS-96C2W248z5d"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/abo.atman20?igsh=MTA3eW53ejAxaGgycA=="><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>جميع الحقوق محفوظة &copy; <span id="currentYear"></span> محمد عبد المنعم محمد مصطفى عتمان</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
